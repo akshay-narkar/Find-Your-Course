@@ -1,8 +1,10 @@
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { signout } from '../API/apicalls';
 import Navbar from './Navbar';
 
 export default function Signout() {
+  const history = useHistory();
+
   const signout1 = () => {
     const sessh = JSON.parse(sessionStorage.getItem('uid'));
 
@@ -12,23 +14,21 @@ export default function Signout() {
       'access-token': sessh['access-token'],
     };
 
-    signout(params);
+    signout(params, history);
   };
 
   return (
     <>
       {!sessionStorage.getItem('uid') ? (
         <>
-          {console.log('take me to home')}
           <Redirect to="/login" />
+          {console.log('take me home')}
         </>
       )
         : (
           <>
             <Navbar />
             {signout1()}
-            {/* <Redirect to="/login" /> */}
-            {/* {console.log('wokring')} */}
 
           </>
         )}
