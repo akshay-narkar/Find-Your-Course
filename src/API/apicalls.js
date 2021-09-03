@@ -1,10 +1,13 @@
 /*eslint-disable*/
 import axios from 'axios';
+import { allcourse, userid } from '../Actions/index'
 
-async function getcourses() {
+async function getcourses(dispatch1) {
   try {
     const response = await axios.get('http://localhost:3000/api/v1/courses');
-    console.log(response);
+    // console.log("printing");
+    dispatch1(allcourse(response.data.data));
+    // console.log(response.data.data);
   } catch (error) {
     console.error(error);
   }
@@ -19,55 +22,48 @@ async function getcoursesingle(id) {
   }
 }
 
-async function signup(params1) {
-  console.log(params1);
+async function signup(params1,history) {
   try {
-    const response = await axios.post('http://localhost:3000/api/v1/auth', {}, { headers: params1 });
+    const response = await axios.post('http://localhost:3000/api/v1/auth', {}, { params: params1 });
     sessionStorage.setItem('uid', JSON.stringify(response.headers));
-    console.log(response);
+    history.push("/")
   } catch (error) {
-    console.error(error);
+    console.log(error.response.data.errors.full_messages[0]);
   }
 }
 
-async function signin(params) {
+async function signin(params,history) {
   console.log(params);
   try {
     const response = await axios.post('http://localhost:3000/api/v1/auth/sign_in', {}, {
-      headers: params,
+      params: params,
     });
 
     // email: 'abc155120@example.com',
     //     password: 'password1',
-    console.log(response.headers);
     sessionStorage.setItem('uid', JSON.stringify(response.headers));
+    history.push("/")
   } catch (error) {
-    console.error(error);
+    console.error(error.response.data.errors[0]);
   }
 }
 
-async function signout(auth_params) {
+async function signout(auth_params, history) {
   console.log(auth_params);
   try {
     sessionStorage.clear();
-    const response = await axios.delete('http://localhost:3000/api/v1/auth/sign_out', {headers: auth_params});
-    console.log(response);
+    await axios.delete('http://localhost:3000/api/v1/auth/sign_out', {params: auth_params});
+    history.push("/login")
   } catch (error) {
-    console.error(error);
+    console.error(error.response.data.errors[0]);
     // return error;
   }
 }
 
-async function getfavs() {
-  const headers = {
-    client: 'K6qck27E3fDtR2cDJpsNJQ',
-    uid: 'abc155120@example.com',
-    'access-token': 'aRvBYq53Ks7dONma60J9Gw',
-  };
-
+async function getfavs(dispatch) {
   try {
-    const response = await axios.get('http://localhost:3000/api/v1/users/2/favs', { headers });
-    console.log(response);
+    const response = await axios.post(`http://localhost:3000/api/v1/users/${userid}/favs`, { params: auth_params });
+    // dispatch1(allcourse(response.data.data));
   } catch (error) {
     console.error(error);
   }
@@ -75,7 +71,7 @@ async function getfavs() {
 
 async function addfav() {
   try {
-    const response = await axios.get('http://localhost:3000/api/v1/courses');
+    const response = await axios.post('http://localhost:3000/api/v1/courses');
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -84,7 +80,7 @@ async function addfav() {
 
 async function delfav() {
   try {
-    const response = await axios.get('http://localhost:3000/api/v1/courses');
+    const response = await axios.post('http://localhost:3000/api/v1/courses');
     console.log(response);
   } catch (error) {
     console.error(error);
