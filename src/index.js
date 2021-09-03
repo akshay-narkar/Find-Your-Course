@@ -3,12 +3,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import './index.css';
 import Routes from './Routes/routes';
+import rootReducer from './Reducers/rootreducer';
 import { BrowserRouter } from 'react-router-dom';
+import { getcourses } from './API/apicalls'
 
 const inistate = {
   favs: [],
@@ -16,16 +19,17 @@ const inistate = {
   username: ''
 }
 
-// const store = createStore(reducer, {reducer: inistate} )
+const store = createStore(rootReducer, {coursersreducer: inistate},  applyMiddleware(thunk) )
+
+store.dispatch(getcourses);
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Provider store = { store }> */}
+    <Provider store = { store }>
       <BrowserRouter>
-
         <Routes />
       </BrowserRouter>
-    {/* </Provider> */}
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
