@@ -1,9 +1,11 @@
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import SignUpForm from '../Components/Signupform';
 import { signup } from '../API/apicalls';
 
 export default function Signup() {
+  const history = useHistory();
+
   const submitChange = (event) => {
     event.preventDefault();
     const params = {
@@ -12,7 +14,7 @@ export default function Signup() {
       password: event.target.Password1.value,
       password_confirmation: event.target.Passwordconfirm.value,
     };
-    signup(params);
+    signup(params, history);
     // if (event.target.id === 'exampleselectInput1' && event.target.value !== '') {
     //   setState1((prevstate) => ({ ...prevstate, Category: event.target.value }));
     // }
