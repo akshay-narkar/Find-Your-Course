@@ -19,7 +19,7 @@ const inistate = {
   username: ''
 }
 
-const store = createStore(rootReducer, {coursersreducer: inistate},  applyMiddleware(thunk) )
+const store = createStore(rootReducer, {coursersreducer: inistate, favsreducer: inistate},  applyMiddleware(thunk) )
 
 store.dispatch(getcourses);
 
