@@ -1,18 +1,21 @@
 import { Redirect, useHistory } from 'react-router-dom';
 import { signout } from '../API/apicalls';
 import Navbar from './Navbar';
+import helperauth from '../API/helper_auth';
 
 export default function Signout() {
   const history = useHistory();
 
   const signout1 = () => {
-    const sessh = JSON.parse(sessionStorage.getItem('uid'));
+    // const sessh = JSON.parse(sessionStorage.getItem('uid'));
 
-    const params = {
-      uid: sessh.uid,
-      client: sessh.client,
-      'access-token': sessh['access-token'],
-    };
+    // const params = {
+    //   uid: sessh.uid,
+    //   client: sessh.client,
+    //   'access-token': sessh['access-token'],
+    // };
+
+    const params = helperauth();
 
     signout(params, history);
   };

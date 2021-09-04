@@ -6,6 +6,10 @@ export default function Navloggedin() {
     <>
       <li>
         {/* <Signout /> */}
+        <Link to={{ pathname: '/users/1/favs' }} className="nav-link active" aria-current="page">Favs</Link>
+      </li>
+      <li>
+        {/* <Signout /> */}
         <Link to={{ pathname: '/logout' }} className="nav-link active" aria-current="page">Logout</Link>
       </li>
       {/* <li className="nav-item">

@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 export default function Loginform(props) {
-  const { clickHandler } = props;
+  const { clickHandler, error } = props;
 
   return (
     <>
       <div className="container text-center my-3">
-        <h1 className="container text-center my-5">Welcome Back!</h1>
-
+        <h1 className="my-2">Welcome Back!</h1>
+        <h3 className="my-4">{error}</h3>
         <form onSubmit={clickHandler}>
           <div className="mb-3">
             <label htmlFor="Email" className="form-label">
@@ -35,4 +35,9 @@ export default function Loginform(props) {
 
 Loginform.propTypes = {
   clickHandler: PropTypes.func.isRequired,
+  error: PropTypes.string,
+};
+
+Loginform.defaultProps = {
+  error: PropTypes.string,
 };
