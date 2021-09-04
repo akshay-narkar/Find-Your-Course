@@ -1,8 +1,8 @@
 const ERROR = 'ERROR';
 const ALLCOURSES = 'ALLCOURSES';
+const USERDEETS = 'USERDEETS';
 // const GETCOURSE = 'GETCOURSES';
 const FAVCOURSES = 'FAVCOURSES';
-const USERID = 'USERID';
 
 const allcourse = (courses) => ({
   type: ALLCOURSES,
@@ -19,17 +19,17 @@ const allfavs = (favs) => ({
   favs,
 });
 
-const userid = (category) => ({
-  type: USERID,
-  category,
-});
-
 const errors = (text) => ({
   type: ERROR,
   text,
 });
 
+const userdeets = (text) => ({
+  type: USERDEETS,
+  text,
+});
+
 export {
   allcourse, allfavs, ALLCOURSES, FAVCOURSES, ERROR,
-  USERID, userid, errors,
+  errors, USERDEETS, userdeets,
 };
