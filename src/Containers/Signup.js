@@ -1,11 +1,14 @@
 import { Redirect, useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Navbar from '../Components/Navbar';
 import SignUpForm from '../Components/Signupform';
 import { signup } from '../API/apicalls';
+import { errors, userdeets } from '../Actions/index';
 
-export default function Signup() {
+function Signup(props) {
   const history = useHistory();
-
+  const { error, errordispatch, userdispatch } = props;
   const submitChange = (event) => {
     event.preventDefault();
     const params = {
@@ -14,7 +17,7 @@ export default function Signup() {
       password: event.target.Password1.value,
       password_confirmation: event.target.Passwordconfirm.value,
     };
-    signup(params, history);
+    signup(params, history, errordispatch, userdispatch);
     // if (event.target.id === 'exampleselectInput1' && event.target.value !== '') {
     //   setState1((prevstate) => ({ ...prevstate, Category: event.target.value }));
     // }
@@ -30,7 +33,7 @@ export default function Signup() {
           {' '}
           <Navbar />
           {' '}
-          <SignUpForm clickHandler={submitChange} />
+          <SignUpForm clickHandler={submitChange} error={error} />
           {' '}
           {' '}
         </>
@@ -39,3 +42,27 @@ export default function Signup() {
     </>
   );
 }
+
+function mapStateToProps(state) {
+  // const { favs } = state.userrreducer;
+  const { error } = state.errorsreducer;
+  return ({ error });
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  errordispatch: (text) => dispatch(errors(text)),
+  userdispatch: (userinfo) => dispatch(userdeets(userinfo)),
+
+});
+
+Signup.propTypes = {
+  errordispatch: PropTypes.func.isRequired,
+  userdispatch: PropTypes.func.isRequired,
+  error: PropTypes.string,
+};
+
+Signup.defaultProps = {
+  error: null,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

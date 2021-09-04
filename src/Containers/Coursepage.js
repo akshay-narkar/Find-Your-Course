@@ -8,22 +8,26 @@ import { coursedetails } from '../Actions/index';
 import { getcourses, getcoursesingle, signin, signup, getfavs } from '../API/apicalls';
 import Navbar from '../Components/Navbar'
 import Singlecoursepage from '../Components/Singlecoursepage'
+import allfavs from '../Reducers/favsreducer'
+import { number } from 'prop-types';
 
 function Coursepage(props){
-
-    const { courses, location } = props;
-    const { key } = location.id;
+    console.log(props);
     const { id } = useParams();
-
-    let rightcourse = courses[0].filter((xmas) => xmas.id === key); 
+    const pageid = +id;
+    const { courses, location } = props;
+    console.log(props);
+    // const { key } = location.id;
+    let rightcourse = courses[0].filter((xmas) => xmas.id === pageid); 
+    console.log(rightcourse);
 
     const addtofavs = () => {
-          
+          getfavs(id); 
     } 
-
-    const removefromfavs = () => {
+    
+    // const removefromfavs = () => {
           
-    } 
+    // } 
 
 
 
