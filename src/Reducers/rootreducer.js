@@ -2,12 +2,12 @@
 
 import { combineReducers } from 'redux';
 import coursersreducer from './coursereducer';
-// import favsreducer from './favsreducer';
-// import errorreducer from './errorreducer';
-// import userreducer from './userreducer';
+import favsreducer from './favsreducer';
+import errorsreducer from './errorreducer';
+import usersreducer from './userreducer';
 
 const rootReducer = combineReducers({
-  coursersreducer 
+  coursersreducer, favsreducer , errorsreducer, usersreducer
 //   teamdeetsReducer, filterReducer, namefilterReducer,
 });
 
