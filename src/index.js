@@ -16,7 +16,8 @@ import { getcourses } from './API/apicalls'
 const inistate = {
   favs: [],
   courses: [],
-  username: ''
+  username: '',
+  favlist: []
 }
 
 const store = createStore(rootReducer, {coursersreducer: inistate, favsreducer: inistate},  applyMiddleware(thunk) )
