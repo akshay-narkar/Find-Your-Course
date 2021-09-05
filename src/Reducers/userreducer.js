@@ -9,8 +9,8 @@ const usersreducer = (state = init, action) => {
   const statenew = { ...state };
   switch (action.type) {
     case USERDEETS:
-      statenew.userid = action.text.userid;
-      statenew.username = action.text.username;
+      statenew.userid = action.user.userid;
+      statenew.username = action.user.username;
       return statenew;
     default:
       return state;
