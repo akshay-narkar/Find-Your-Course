@@ -1,6 +1,7 @@
 import configureStore from 'redux-mock-store';
-import {allcourse, allfavs, 
-  errors, userdeets, addfav
+import {
+  allcourse, allfavs,
+  errors, userdeets, addfav,
 } from '../../Actions/index';
 
 const mockStore = configureStore();
@@ -77,7 +78,7 @@ describe('Test All actions', () => {
     });
   });
 
- describe('Test Error', () => {
+  describe('Test Error', () => {
     test('Dispatches the correct error which is the error caught', () => {
       const expectedActions = [
         {
@@ -99,7 +100,7 @@ describe('Test All actions', () => {
     });
   });
 
-   describe('Test User Details', () => {
+  describe('Test User Details', () => {
     test('Dispatches the correct user details', () => {
       const expectedActions = [
         {

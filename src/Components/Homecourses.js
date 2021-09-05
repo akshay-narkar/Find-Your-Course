@@ -4,10 +4,6 @@ import { Link } from 'react-router-dom';
 export default function Courses(props) {
   const { x } = props;
 
-  //   const width = {
-  //     width: '85px',
-  //   };
-
   const maxwidth = {
     width: '310px',
   };
@@ -31,9 +27,6 @@ Courses.propTypes = {
   x: PropTypes.shape({
     id: PropTypes.number.isRequired,
     domain: PropTypes.string.isRequired,
-
-    // area: PropTypes.shape({ id: PropTypes.number, name: PropTypes.string }).isRequired,
-    // crestUrl: PropTypes.string,
     name: PropTypes.string.isRequired,
   }).isRequired,
 };

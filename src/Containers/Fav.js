@@ -1,63 +1,50 @@
-/*eslint-disable*/
-
 import { Link, useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { allfavs, errors } from '../Actions/index';
-import { getcourses, getcoursesingle, signin, signup, getfavs } from '../API/apicalls';
-import Navbar from '../Components/Navbar'
-import Singlefavpage from '../Components/Singlefavpage'
-import { number } from 'prop-types';
+import { getfavs } from '../API/apicalls';
+import Navbar from '../Components/Navbar';
+import Singlefavpage from '../Components/Singlefavpage';
 import helperauth from '../API/helper_auth';
 
-function FavsPage(props){
-    const { user_id } = useParams();
-    const { favs, calldispatch, errordispatch } = props;
-    const params = helperauth();
-    // const [state, setstate] = useState({
-    //     id: null,
-    // });
+function FavsPage(props) {
+  /* eslint-disable-next-line */
+  const { user_id } = useParams();
+  const { favs, calldispatch, errordispatch } = props;
+  const params = helperauth();
 
-    // const { key } = location.id;
-    // let rightcourse = courses[0].filter((xmas) => xmas.id === pageid); 
-    // console.log(rightcourse);
+  useEffect(() => {
+    getfavs(user_id, calldispatch, params, errordispatch);
+  }, []);
 
-      useEffect(() => {
-                getfavs(user_id, calldispatch, params, errordispatch);
-                // if (teaminfo.length !== 0) {
-                //     setstate((prevstate) => ({ ...prevstate, id: teaminfo[0].id }));
-                // }
-        }, []);
-    // const removefromfavs = () => {
-          
-    // } 
-
-
-
-return(
+  return (
     <>
-    <Navbar />
-      
-         <div className="d-flex flex-wrap container p-0 m-auto justify-content-center">
-       {favs.length === 0 ? <h5>Loading... </h5>
-          : 
-          favs[0].map((x) => 
+      <Navbar />
+
+      <div className="d-flex flex-wrap container p-0 m-auto justify-content-center">
+        {favs.length === 0 ? <h5>No Favorites Yet! </h5>
+          : favs[0].map((x) => (
             <div key={x.id} className="border d-flex align-items-center justify-content-center m-2 py-4">
               <Link to={{ pathname: `/course/${x.id}` }}>
                 <Singlefavpage x={x} />
               </Link>
             </div>
-        
-          )}
+          ))}
       </div>
-        
-      {/* <button type="button" className="import { errors, userdeets } from '../Actions/index';
-my-2 p-2 btn btn-primary btn-sm" onClick = {addtofavs} >Add to Favorites</button> */}
-        
     </>
   );
 }
+
+FavsPage.propTypes = {
+  calldispatch: PropTypes.func.isRequired,
+  errordispatch: PropTypes.func.isRequired,
+  favs: PropTypes.arrayOf(PropTypes.object),
+};
+
+FavsPage.defaultProps = {
+  favs: [{}],
+};
 
 function mapStateToProps(state) {
   const { favs } = state.favsreducer;

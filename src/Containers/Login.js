@@ -1,5 +1,3 @@
-/*eslint-disable*/
-
 import { Redirect, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -13,25 +11,19 @@ function Login(props) {
   const { error, errordispatch, userdispatch } = props;
   const submitChange = (event) => {
     event.preventDefault();
-    const params = { 'email': event.target.Email1.value, password: event.target.Password1.value };
-    signin(params,history, errordispatch, userdispatch);
-    // if (event.target.id === 'exampleselectInput1' && event.target.value !== '') {
-    //   setState1((prevstate) => ({ ...prevstate, Category: event.target.value }));
-    // }
-    // addnewbook(state);
-    // setState1(() => ({ Title: '', Category: '' }));
+    const params = { email: event.target.Email1.value, password: event.target.Password1.value };
+    signin(params, history, errordispatch, userdispatch);
   };
 
   return (
 
     <>
 
-      {sessionStorage.getItem('uid') ? (<Redirect to="/" />): (
+      {sessionStorage.getItem('uid') ? (<Redirect to="/" />) : (
         <>
           {' '}
           <Navbar />
           {' '}
-          {console.log(error)}
           <LoginForm clickHandler={submitChange} error={error} />
           {' '}
 
@@ -42,9 +34,7 @@ function Login(props) {
   );
 }
 
-
 function mapStateToProps(state) {
-  // const { favs } = state.userrreducer;
   const { error } = state.errorsreducer;
   return ({ error });
 }

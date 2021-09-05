@@ -1,5 +1,4 @@
 import { FAVCOURSES, FAVCOURSEADD } from '../Actions/index';
-// import { FAVCOURSEDEL } from '../Actions/index';
 
 const favsreducer = (state = [], action) => {
   const statenew = { ...state };
@@ -9,7 +8,6 @@ const favsreducer = (state = [], action) => {
       return statenew;
     case FAVCOURSEADD:
       statenew.favlist = [...statenew.favlist, action.fav];
-      console.log(statenew);
       return statenew;
     // case FAVCOURSEDEL:
     //   statenew.favs = [...statenew.favs, action.fav];

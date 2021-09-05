@@ -1,96 +1,83 @@
-/*eslint-disable*/
 import axios from 'axios';
-import { allcourse } from '../Actions/index'
+import { allcourse } from '../Actions/index';
 
-const delay = time => new Promise(res => setTimeout(res, time));
+const delay = (time) => new Promise((res) => setTimeout(res, time));
 
 async function getcourses(dispatch1) {
   try {
     const response = await axios.get('http://localhost:3000/api/v1/courses');
-    // console.log("printing");
     dispatch1(allcourse(response.data.data));
-    // console.log(response.data.data);
   } catch (error) {
-    console.error(error);
+    // console.error(error);
   }
 }
 
-// async function getcoursesingle(id) {
-//   try {
-//     const response = await axios.get(`http://localhost:3000/api/v1/courses/${id}`);
-//     console.log(response);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
-async function signup(sign_up,history, errordispatch, userdispatch) {
+async function signup(signUp, history, errordispatch, userdispatch) {
   try {
-    const response = await axios.post('http://localhost:3000/api/v1/auth', {name: sign_up.name, email: sign_up.email, password: sign_up.password, password_confirmation: sign_up.password_confirmation },{});
+    const response = await axios.post('http://localhost:3000/api/v1/auth', {
+      name: signUp.name,
+      email: signUp.email,
+      password: signUp.password,
+      password_confirmation: signUp.password_confirmation,
+    }, {});
     sessionStorage.setItem('uid', JSON.stringify(response.headers));
-    const user = {userid: response.data.data.id, username: response.data.data.name }  
+    const user = { userid: response.data.data.id, username: response.data.data.name };
     userdispatch(user);
-    history.push("/")
+    history.push('/');
   } catch (error) {
-    console.log(error);
-    const error1 =  error.response.data.errors.full_messages[0];
+    const error1 = error.response.data.errors.full_messages[0];
     errordispatch(error1);
     await delay(2000);
     errordispatch(null);
   }
 }
 
-async function signin(params,history, errordispatch, userdispatch) {
+async function signin(params, history, errordispatch, userdispatch) {
   try {
     const response = await axios.post('http://localhost:3000/api/v1/auth/sign_in', {}, {
       headers: params,
     });
 
-    // email: 'abc155120@example.com',
-    //     password: 'password1',
-    const user = {userid: response.data.data.id, username: response.data.data.name }  
+    const user = { userid: response.data.data.id, username: response.data.data.name };
     userdispatch(user);
     sessionStorage.setItem('uid', JSON.stringify(response.headers));
-    history.push("/")
+    history.push('/');
   } catch (error) {
-    // console.log(error.response.data.errors[0]);
-    const error1 =  error.response.data.errors[0];
+    const error1 = error.response.data.errors[0];
     errordispatch(error1);
     await delay(2000);
     errordispatch(null);
   }
 }
 
-async function signout(auth_params, history) {
+async function signout(authParams, history) {
   try {
     sessionStorage.clear();
-    const response = await axios.delete('http://localhost:3000/api/v1/auth/sign_out', {params: auth_params});
-    console.log(response)
-    history.push("/login")
+    await axios.delete('http://localhost:3000/api/v1/auth/sign_out', { params: authParams });
+    history.push('/login');
   } catch (error) {
     // return error;
   }
 }
 
-async function getfavs( userid, dispatch1, auth_params, errordispatch) {
-  console.log(userid);
+async function getfavs(userid, dispatch1, authParams, errordispatch) {
   try {
-    const response = await axios.get(`http://localhost:3000/api/v1/users/${userid}/favs`,{ params: auth_params });
+    const response = await axios.get(`http://localhost:3000/api/v1/users/${userid}/favs`, { params: authParams });
     dispatch1((response.data.data));
-  } catch (error) {  
-    const error1 =  error.response.data.errors[0];
+  } catch (error) {
+    const error1 = error.response.data.errors[0];
     errordispatch(error1);
     await delay(2000);
     errordispatch(null);
   }
 }
 
-async function addfavapi(userid, dispatch1, auth_params, id, errordispatch) {
+async function addfavapi(userid, dispatch1, authParams, id, errordispatch) {
   try {
-    const response = await axios.post(`http://localhost:3000/api/v1/users/${userid}/favs`,{course_id: id}, {headers: auth_params});
+    const response = await axios.post(`http://localhost:3000/api/v1/users/${userid}/favs`, { course_id: id }, { headers: authParams });
     dispatch1((response.data.data.course_id));
-   } catch (error) {
-    const error1 =  error.response.data.data.user_id[0];
+  } catch (error) {
+    const error1 = error.response.data.data.user_id[0];
     errordispatch(error1);
     await delay(2000);
     errordispatch(null);

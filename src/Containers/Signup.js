@@ -18,11 +18,6 @@ function Signup(props) {
       password_confirmation: event.target.Passwordconfirm.value,
     };
     signup(params, history, errordispatch, userdispatch);
-    // if (event.target.id === 'exampleselectInput1' && event.target.value !== '') {
-    //   setState1((prevstate) => ({ ...prevstate, Category: event.target.value }));
-    // }
-    // addnewbook(state);
-    // setState1(() => ({ Title: '', Category: '' }));
   };
 
   return (
@@ -44,7 +39,6 @@ function Signup(props) {
 }
 
 function mapStateToProps(state) {
-  // const { favs } = state.userrreducer;
   const { error } = state.errorsreducer;
   return ({ error });
 }
