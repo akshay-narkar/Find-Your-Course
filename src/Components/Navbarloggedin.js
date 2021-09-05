@@ -1,12 +1,19 @@
 import { Link } from 'react-router-dom';
 // import Signout from '../Containers/Signout';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-export default function Navloggedin() {
+function Navloggedin(props) {
+  const { userid, username } = props;
+
   return (
     <>
       <li>
         {/* <Signout /> */}
-        <Link to={{ pathname: '/users/1/favs' }} className="nav-link active" aria-current="page">Favs</Link>
+        <Link to={{ pathname: `/users/${userid}/favs` }} className="nav-link active" aria-current="page">
+          {username}
+          `s Favs
+        </Link>
       </li>
       <li>
         {/* <Signout /> */}
@@ -21,3 +28,20 @@ export default function Navloggedin() {
 
   );
 }
+
+function mapStateToProps(state) {
+  console.log(state);
+  const { userid, username } = state.usersreducer;
+  return ({ userid, username });
+}
+
+Navloggedin.propTypes = {
+  userid: PropTypes.number.isRequired,
+  username: PropTypes.string,
+};
+
+Navloggedin.defaultProps = {
+  username: 'NoName',
+};
+
+export default connect(mapStateToProps)(Navloggedin);
