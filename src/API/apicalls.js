@@ -15,14 +15,14 @@ async function getcourses(dispatch1) {
   }
 }
 
-async function getcoursesingle(id) {
-  try {
-    const response = await axios.get(`http://localhost:3000/api/v1/courses/${id}`);
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
-}
+// async function getcoursesingle(id) {
+//   try {
+//     const response = await axios.get(`http://localhost:3000/api/v1/courses/${id}`);
+//     console.log(response);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
 
 async function signup(sign_up,history, errordispatch, userdispatch) {
   try {
@@ -64,44 +64,48 @@ async function signin(params,history, errordispatch, userdispatch) {
 async function signout(auth_params, history) {
   try {
     sessionStorage.clear();
-    await axios.delete('http://localhost:3000/api/v1/auth/sign_out', {params: auth_params});
+    const response = await axios.delete('http://localhost:3000/api/v1/auth/sign_out', {params: auth_params});
+    console.log(response)
     history.push("/login")
   } catch (error) {
-    console.error(error.response.data.errors[0]);
     // return error;
   }
 }
 
-async function getfavs( userid, dispatch1, auth_params) {
+async function getfavs( userid, dispatch1, auth_params, errordispatch) {
   console.log(userid);
   try {
-    const response = await axios.get(`http://localhost:3000/api/v1/users/14/favs`,{ params: auth_params });
-    console.log(response)
+    const response = await axios.get(`http://localhost:3000/api/v1/users/${userid}/favs`,{ params: auth_params });
     dispatch1((response.data.data));
-  } catch (error) {
-    console.error(error);
+  } catch (error) {  
+    const error1 =  error.response.data.errors[0];
+    errordispatch(error1);
+    await delay(2000);
+    errordispatch(null);
   }
 }
 
-async function addfav(userid, dispatch1, auth_params, id) {
+async function addfavapi(userid, dispatch1, auth_params, id, errordispatch) {
   try {
-    const response = await axios.post(`http://localhost:3000/api/v1/users/${userid}/favs/${id}`,{course_id: id},{params: auth_params});
-    // dispatch1(allcourse(response.data.data));
-    console.log(response);
-  } catch (error) {
-    console.error(error);
+    const response = await axios.post(`http://localhost:3000/api/v1/users/${userid}/favs`,{course_id: id}, {headers: auth_params});
+    dispatch1((response.data.data.course_id));
+   } catch (error) {
+    const error1 =  error.response.data.data.user_id[0];
+    errordispatch(error1);
+    await delay(2000);
+    errordispatch(null);
   }
 }
 
-async function delfav(id) {
-  try {
-    const response = await axios.post(`http://localhost:3000/api/v1/users/${userid}/favs/1`, {params:{course_id:id}});
-    // dispatch1(allcourse(response.data.data));
-  } catch (error) {
-    console.error(error);
-  }
-}
+// async function delfav(id) {
+//   try {
+//     const response = await axios.post(`http://localhost:3000/api/v1/users/${userid}/favs/1`, {params:{course_id:id}});
+//     // dispatch1(allcourse(response.data.data));
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
 
 export {
-  getcourses, signin, signup, getcoursesingle, getfavs, addfav, delfav, signout,
+  getcourses, signin, signup, getfavs, addfavapi, signout,
 };
