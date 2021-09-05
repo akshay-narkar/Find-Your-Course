@@ -4,26 +4,32 @@ import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { coursedetails } from '../Actions/index';
-import { getcourses, getcoursesingle, signin, signup, getfavs } from '../API/apicalls';
+import { addfav, errors } from '../Actions/index';
+import { addfavapi } from '../API/apicalls';
 import Navbar from '../Components/Navbar'
 import Singlecoursepage from '../Components/Singlecoursepage'
-import allfavs from '../Reducers/favsreducer'
-import { number } from 'prop-types';
+import helperauth from '../API/helper_auth';
 
 function Coursepage(props){
-    console.log(props);
+     
+    const [state, setstate] = useState({
+          toggle: 0
+        });
+
+    const { toggle } = state;
+    
     const { id } = useParams();
     const pageid = +id;
-    const { courses, location } = props;
-    console.log(props);
-    // const { key } = location.id;
-    let rightcourse = courses[0].filter((xmas) => xmas.id === pageid); 
-    console.log(rightcourse);
+    const { courses, userid, favlist, calldispatch, errordispatch } = props;
+    const rightcourse = courses[0].filter((xmas) => xmas.id === pageid); 
+    let params;
+
+    if (sessionStorage.getItem('uid')){ params = helperauth(); }
 
     const addtofavs = () => {
-          getfavs(id); 
-    } 
+          addfavapi(userid, calldispatch, params, id, errordispatch); 
+    }
+    
     
     // const removefromfavs = () => {
           
@@ -45,9 +51,17 @@ return(
           ))}
       {/* {console.log(courses)} */}
       </div>
-        
-      <button type="button" className="my-2 p-2 btn btn-primary btn-sm" onClick = {addtofavs} >Add to Favorites</button>
-        
+    { (sessionStorage.getItem('uid')) ? 
+          (favlist.includes(pageid)) ?
+               
+             <> <button type="button" className="my-2 p-2 btn btn-primary btn-sm" >In Favs</button> {console.log("here")} </>
+              :
+            <> <button type="button" className="my-2 p-2 btn btn-primary btn-sm" onClick = {addtofavs} >Add to Favorites</button> {console.log("nothere")} </>
+          : 
+        <Link to={{ pathname: `/login` }}>
+                 <button type="button" className="my-2 p-2 btn btn-primary btn-sm">Add to Favorites</button>  
+        </Link>
+    }   
     </>
   );
 }
@@ -95,8 +109,17 @@ return(
 // });
 
 function mapStateToProps(state) {
+  const { userid } = state.usersreducer;
   const { courses } = state.coursersreducer;
-  return ({ courses });
+  const { favlist } = state.favsreducer;
+
+  return ({ userid, courses, favlist });
 }
 
-export default connect(mapStateToProps)(Coursepage);
+const mapDispatchToProps = (dispatch) => ({
+  calldispatch: (id) => dispatch(addfav(id)),
+  errordispatch: (text) => dispatch(errors(text)),
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Coursepage);
