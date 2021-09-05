@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { allfavs } from '../Actions/index';
+import { allfavs, errors } from '../Actions/index';
 import { getcourses, getcoursesingle, signin, signup, getfavs } from '../API/apicalls';
 import Navbar from '../Components/Navbar'
 import Singlefavpage from '../Components/Singlefavpage'
@@ -12,12 +12,9 @@ import { number } from 'prop-types';
 import helperauth from '../API/helper_auth';
 
 function FavsPage(props){
-    const { id } = useParams();
-    const userid = +id;
-    const { favs, calldispatch } = props;
-    console.log(props);
+    const { user_id } = useParams();
+    const { favs, calldispatch, errordispatch } = props;
     const params = helperauth();
-
     // const [state, setstate] = useState({
     //     id: null,
     // });
@@ -27,7 +24,7 @@ function FavsPage(props){
     // console.log(rightcourse);
 
       useEffect(() => {
-                getfavs(userid, calldispatch, params);
+                getfavs(user_id, calldispatch, params, errordispatch);
                 // if (teaminfo.length !== 0) {
                 //     setstate((prevstate) => ({ ...prevstate, id: teaminfo[0].id }));
                 // }
@@ -55,7 +52,8 @@ return(
           )}
       </div>
         
-      {/* <button type="button" className="my-2 p-2 btn btn-primary btn-sm" onClick = {addtofavs} >Add to Favorites</button> */}
+      {/* <button type="button" className="import { errors, userdeets } from '../Actions/index';
+my-2 p-2 btn btn-primary btn-sm" onClick = {addtofavs} >Add to Favorites</button> */}
         
     </>
   );
@@ -68,6 +66,8 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = (dispatch) => ({
   calldispatch: (id) => dispatch(allfavs(id)),
+  errordispatch: (text) => dispatch(errors(text)),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavsPage);
