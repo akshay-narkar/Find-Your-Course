@@ -14,8 +14,8 @@ export default function Signout() {
     //   client: sessh.client,
     //   'access-token': sessh['access-token'],
     // };
-
-    const params = helperauth();
+    let params;
+    if (sessionStorage.getItem('uid')) { params = helperauth(); }
 
     signout(params, history);
   };
