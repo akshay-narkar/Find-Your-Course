@@ -3,20 +3,27 @@ const ALLCOURSES = 'ALLCOURSES';
 const USERDEETS = 'USERDEETS';
 // const GETCOURSE = 'GETCOURSES';
 const FAVCOURSES = 'FAVCOURSES';
+const FAVCOURSEADD = 'FAVCOURSEADD';
+const FAVCOURSEDEL = 'FAVCOURSEDEL';
 
 const allcourse = (courses) => ({
   type: ALLCOURSES,
   courses,
 });
 
-// const getcourse = (courses) => ({
-//   type: GETCOURSE,
-//   courses,
-// });
-
 const allfavs = (favs) => ({
   type: FAVCOURSES,
   favs,
+});
+
+const addfav = (fav) => ({
+  type: FAVCOURSEADD,
+  fav,
+});
+
+const delfav = (fav) => ({
+  type: FAVCOURSEDEL,
+  fav,
 });
 
 const errors = (text) => ({
@@ -24,12 +31,13 @@ const errors = (text) => ({
   text,
 });
 
-const userdeets = (text) => ({
+const userdeets = (user) => ({
   type: USERDEETS,
-  text,
+  user,
 });
 
 export {
   allcourse, allfavs, ALLCOURSES, FAVCOURSES, ERROR,
-  errors, USERDEETS, userdeets,
+  errors, USERDEETS, userdeets, addfav, FAVCOURSEADD,
+  FAVCOURSEDEL, delfav,
 };
