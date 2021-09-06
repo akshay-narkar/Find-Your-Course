@@ -5,7 +5,7 @@ import { addfav, errors } from '../Actions/index';
 import { addfavapi } from '../API/apicalls';
 import Navbar from '../Components/Navbar';
 import Singlecoursepage from '../Components/Singlecoursepage';
-import helperauth from '../API/helper_auth';
+import helperauth from '../Helpers/helper_auth';
 
 function Coursepage(props) {
   const { id } = useParams();
@@ -13,7 +13,12 @@ function Coursepage(props) {
   const {
     courses, userid, calldispatch, errordispatch,
   } = props;
-  const rightcourse = courses[0].filter((xmas) => xmas.id === pageid);
+
+  let rightcourse = [];
+
+  if (courses.length > 0) {
+    rightcourse = courses[0].filter((xmas) => xmas.id === pageid);
+  }
   let params;
 
   if (sessionStorage.getItem('uid')) { params = helperauth(); }
@@ -31,7 +36,7 @@ function Coursepage(props) {
       <Navbar />
       {rightcourse.length === 0 ? (
         <div className="my-4">
-          <h3 className="text-center">Loading... </h3>
+          <h3 className="text-center">Loading.../ No Courses Found </h3>
         </div>
       )
         : (
