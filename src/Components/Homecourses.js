@@ -73,8 +73,3 @@ Courses.propTypes = {
     fee: PropTypes.number.isRequired,
   }).isRequired,
 };
-
-// AllTeams.defaultProps = {
-//   x: PropTypes.shape({
-//     crestUrl: null,
-//   }),
