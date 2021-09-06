@@ -27,6 +27,11 @@ code {
   background-color: #ec5200;
   color: white;
   border: 1px white;
+  height: 60px;
+}
+
+.favssize {
+  font-size: large;
 }
 
 .shadow {
