@@ -27,11 +27,12 @@ function mapStateToProps(state) {
 }
 
 Navloggedin.propTypes = {
-  userid: PropTypes.number.isRequired,
+  userid: PropTypes.number,
   username: PropTypes.string,
 };
 
 Navloggedin.defaultProps = {
+  userid: 1,
   username: 'NoName',
 };
 
