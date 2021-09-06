@@ -55,14 +55,7 @@ export default function Singlefavpage(props) {
               {x.fee}
             </p>
           </div>
-          {/* <a href="#" class="btn btn-primary">Go somewhere</a> */}
         </div>
-        {/* <div id={x.id} className="d-flex align-items-center justify-content-start px-5"> */}
-        {/* <img src={x.crestUrl} style={width} alt="LogoHere" /> */}
-        {/* <div>
-            <p className="ms-3 fw-bold">{x.name}</p>
-            <p className="ms-3 fw-light">{x.domain}</p>
-          </div> */}
       </div>
     </>
   );
