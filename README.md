@@ -12,16 +12,16 @@ Find Your Course is a The Final Capstone project as a part of the Microverse Cur
 - Add a course to your favorites list only if logged in
 - Access all courses in your favorites list
 
-<!-- ## The Football Catalogue screenshot -->
+## Find Your Course Screenshots
 
-<!-- <div align = "center">
-<img src="./home.png" width="75%"/>
+<div align = "center">
+<img src="./src/images/login.png" height="55%"/>
 </div>
 <hr/>
 
 <div align = "center">
-<img src="./teamdetails.png" width="75%"/>
-</div> -->
+<img src="./src/images/signup.png" height="55%"/>
+</div>
 
 ## Built With
 
@@ -55,7 +55,7 @@ If you want to repack the file
 
 ## Live Link of the project
 
-[Live-Project]()
+[Live-Project](https://upskillmicroverse.netlify.app/)
 
 ## Author
 
