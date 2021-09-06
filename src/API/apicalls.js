@@ -88,7 +88,8 @@ async function addfavapi(userid, dispatch1, authParams, id, errordispatch) {
 
 // async function delfav(id) {
 //   try {
-//     const response = await axios.post(`https://courses-api-microverse.herokuapp.com/api/v1/users/${userid}/favs/1`, {params:{course_id:id}});
+//     const response = await axios.post(` https://courses-api-microverse.herokuapp.com/api/v1/users/${userid}/favs/1`,
+//  {params:{course_id:id}});
 //     // dispatch1(allcourse(response.data.data));
 //   } catch (error) {
 //     console.error(error);
