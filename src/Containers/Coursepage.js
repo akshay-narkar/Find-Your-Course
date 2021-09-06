@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addfav, errors } from '../Actions/index';
@@ -11,7 +11,7 @@ function Coursepage(props) {
   const { id } = useParams();
   const pageid = +id;
   const {
-    courses, userid, favlist, calldispatch, errordispatch,
+    courses, userid, calldispatch, errordispatch,
   } = props;
   const rightcourse = courses[0].filter((xmas) => xmas.id === pageid);
   let params;
@@ -29,38 +29,27 @@ function Coursepage(props) {
   return (
     <>
       <Navbar />
-
-      <div className="d-flex flex-wrap container p-0 m-auto justify-content-center">
-        {rightcourse.length === 0 ? <h5>Loading... </h5>
-          : rightcourse.map((x) => (
-            <div key={x.id} className="border d-flex align-items-center justify-content-center m-2 py-4">
-              <Singlecoursepage x={x} />
-            </div>
-          ))}
-      </div>
-      {/* eslint-disable-next-line */}
-      { (sessionStorage.getItem('uid'))
-        ? (favlist.includes(pageid))
-
-          ? (
-            <>
-              {' '}
-              <button type="button" className="my-2 p-2 btn btn-primary btn-sm">In Favs</button>
-              {' '}
-            </>
-          )
-          : (
-            <>
-              {' '}
-              <button type="button" className="my-2 p-2 btn btn-primary btn-sm" onClick={addtofavs}>Add to Favorites</button>
-              {' '}
-            </>
-          )
+      {rightcourse.length === 0 ? (
+        <div className="my-4">
+          <h3 className="text-center">Loading... </h3>
+        </div>
+      )
         : (
-          <Link to={{ pathname: '/login' }}>
-            <button type="button" className="my-2 p-2 btn btn-primary btn-sm">Add to Favorites</button>
-          </Link>
+          <>
+
+            <div className="my-4">
+              <h3 className="text-center">{rightcourse[0].name}</h3>
+            </div>
+            <div className="d-flex flex-wrap p-0 mx-auto mt-2 mb-4 justify-content-center favpage">
+              {rightcourse.map((x) => (
+                <div key={x.id} className="container my-4 mx-2 p-0">
+                  <Singlecoursepage x={x} pageid={pageid} clickhandler={addtofavs} />
+                </div>
+              ))}
+            </div>
+          </>
         )}
+
     </>
   );
 }
@@ -70,20 +59,17 @@ Coursepage.propTypes = {
   errordispatch: PropTypes.func.isRequired,
   userid: PropTypes.number,
   courses: PropTypes.arrayOf(PropTypes.array).isRequired,
-  favlist: PropTypes.arrayOf(PropTypes.string),
 };
 
 Coursepage.defaultProps = {
-  favlist: [''],
   userid: null,
 };
 
 function mapStateToProps(state) {
   const { userid } = state.usersreducer;
   const { courses } = state.coursersreducer;
-  const { favlist } = state.favsreducer;
 
-  return ({ userid, courses, favlist });
+  return ({ userid, courses });
 }
 
 const mapDispatchToProps = (dispatch) => ({
