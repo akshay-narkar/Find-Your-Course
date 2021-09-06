@@ -55,5 +55,5 @@ Signupform.propTypes = {
 };
 
 Signupform.defaultProps = {
-  error: PropTypes.string,
+  error: '',
 };
