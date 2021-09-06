@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UI is unaltered wrt first snapshot 1`] = `
+Array [
+  <li>
+    <a
+      aria-current="page"
+      className="nav-link active fw-bold"
+      href="/users/null/favs"
+      onClick={[Function]}
+    >
+      \`s Favs
+    </a>
+  </li>,
+  <li>
+    <a
+      aria-current="page"
+      className="nav-link active fw-light"
+      href="/logout"
+      onClick={[Function]}
+    >
+      Logout
+    </a>
+  </li>,
+]
+`;

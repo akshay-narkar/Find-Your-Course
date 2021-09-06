@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UI is unaltered wrt first snapshot 1`] = `
+<div
+  className="backgroundsign row align-items-center"
+>
+  <div
+    className="container text-center my-4"
+  >
+    <h1
+      className="my-2"
+    >
+      Welcome To UpSkill!
+    </h1>
+    <h3
+      className="my-4"
+    >
+      
+    </h3>
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="mb-3"
+      >
+        <label
+          className="form-label fw-bold"
+          htmlFor="Name"
+        >
+          Your First Name
+          <input
+            className="form-control"
+            id="Name"
+            required={true}
+            type="text"
+          />
+        </label>
+      </div>
+      <div
+        className="mb-3"
+      >
+        <label
+          className="form-label fw-bold"
+          htmlFor="Email"
+        >
+          Email Address
+          <input
+            className="form-control fw-bold"
+            id="Email1"
+            required={true}
+            type="email"
+          />
+        </label>
+      </div>
+      <div
+        className="mb-3"
+      >
+        <label
+          className="form-label fw-bold"
+          htmlFor="Password"
+        >
+          Password
+          <input
+            className="form-control fw-bold"
+            id="Password1"
+            required={true}
+            type="password"
+          />
+        </label>
+      </div>
+      <div
+        className="mb-3"
+      >
+        <label
+          className="form-label fw-bold"
+          htmlFor="Passwordconfirm"
+        >
+          Confirm Password
+          <input
+            className="form-control fw-bold"
+            id="Passwordconfirm"
+            required={true}
+            type="password"
+          />
+        </label>
+      </div>
+      <button
+        className="btn signing shadow fw-bold"
+        type="submit"
+      >
+        Sign Up
+      </button>
+    </form>
+    <div
+      className="mt-3"
+    >
+      <p
+        className="mb-0"
+      >
+        Already a User? Login Here
+      </p>
+      <a
+        className="nav-link active mt-1 pt-1"
+        href="/login"
+        onClick={[Function]}
+      >
+        Login
+      </a>
+    </div>
+  </div>
+</div>
+`;
