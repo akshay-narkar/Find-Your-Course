@@ -22,11 +22,14 @@ function FavsPage(props) {
     <>
       <Navbar />
 
-      <div className="d-flex flex-wrap container p-0 m-auto justify-content-center">
+      <div className="my-4">
+        <h3 className="text-center">Your Favorites </h3>
+      </div>
+      <div className="d-flex flex-wrap p-0 mx-auto my-4 justify-content-center">
         {favs.length === 0 ? <h5>No Favorites Yet! </h5>
           : favs[0].map((x) => (
-            <div key={x.id} className="border d-flex align-items-center justify-content-center m-2 py-4">
-              <Link to={{ pathname: `/course/${x.id}` }}>
+            <div key={x.id} className="d-flex align-items-center justify-content-center my-4 mx-2">
+              <Link to={{ pathname: `/course/${x.id}` }} className="link">
                 <Singlefavpage x={x} />
               </Link>
             </div>
