@@ -41,5 +41,5 @@ Loginform.propTypes = {
 };
 
 Loginform.defaultProps = {
-  error: PropTypes.string,
+  error: '',
 };
