@@ -45,7 +45,7 @@ export default function Singlefavpage(props) {
               <ReactStars
                 count={5}
                 value={x.rating}
-                size={size}
+                size={22}
                 edit={false}
                 color2="#b79c07"
               />

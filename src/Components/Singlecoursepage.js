@@ -11,14 +11,9 @@ function Singlecoursepage(props) {
     x, favlist, pageid, clickhandler,
   } = props;
 
-  // const width = {
-  //   width: '19rem',
-  //   // height: '25rem',
-  // };
 
   const imagewidth = {
     width: '100%',
-    // height: '20rem',
   };
 
   const size = {
@@ -50,7 +45,7 @@ function Singlecoursepage(props) {
               <ReactStars
                 count={5}
                 value={x.rating}
-                size={size}
+                size={22}
                 edit={false}
                 color2="#b79c07"
               />
