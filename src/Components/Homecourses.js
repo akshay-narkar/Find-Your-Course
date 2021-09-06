@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactStars from 'react-stars';
-import image from '../images/signup.jpg';
+// import image from '../images/signup.jpg';
 
 export default function Courses(props) {
   const { x } = props;
 
   const width = {
     width: '18rem',
-    height: '24rem',
+    'min-height': '30rem',
   };
 
   const imagewidth = {
@@ -28,7 +28,7 @@ export default function Courses(props) {
     <>
       <Link to={{ pathname: `/course/${x.id}`, id: { key: x.id } }} className="link">
         <div className="card cardborder shadow-card" id={x.id} style={width}>
-          <img src={image} style={imagewidth} className="card-img-top" alt="course" />
+          <img src={x.course_photo} style={imagewidth} className="card-img-top" alt="course" />
           <div className="card-body d-flex justify-content-left">
             <div>
               <p className="card-title m-0 fw-bold">
@@ -71,6 +71,7 @@ Courses.propTypes = {
     name: PropTypes.string,
     rating: PropTypes.number,
     fee: PropTypes.number,
+    course_photo: PropTypes.string,
   }),
 };
 
@@ -81,5 +82,6 @@ Courses.defaultProps = {
     name: 'Prof X',
     rating: 5,
     fee: 25,
+    course_photo: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp2698114.jpg&f=1&nofb=1',
   }),
 };
