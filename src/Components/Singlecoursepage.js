@@ -31,7 +31,7 @@ function Singlecoursepage(props) {
         <div className="card-body d-flex justify-content-left">
           <div>
             <h4 className="card-title fw-bold my-3">
-              <span className="fw-bold">Taught By:</span>&nbsp; {x.teacher}
+              <span className="fw-bold">Taught By:</span>&nbsp; {x.teacher_name}
             </h4>
              <h5 className="card-text fw-normal">
               <span className="fw-bold">Domain:</span>&nbsp;{x.domain}
@@ -106,6 +106,7 @@ Singlecoursepage.propTypes = {
     name: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     fee: PropTypes.number.isRequired,
+    teacher_name: PropTypes.string.isRequired,
   }).isRequired,
 };
 
