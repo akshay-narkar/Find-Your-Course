@@ -47,7 +47,7 @@ export default function Courses(props) {
                 <ReactStars
                   count={5}
                   value={x.rating}
-                  size={size}
+                  size={22}
                   edit={false}
                   color2="#b79c07"
                 />
@@ -66,10 +66,20 @@ export default function Courses(props) {
 
 Courses.propTypes = {
   x: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    domain: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    fee: PropTypes.number.isRequired,
-  }).isRequired,
+    id: PropTypes.number,
+    domain: PropTypes.string,
+    name: PropTypes.string,
+    rating: PropTypes.number,
+    fee: PropTypes.number,
+  }),
+};
+
+Courses.defaultProps = {
+  x: PropTypes.shape({
+    id: 1,
+    domain: 'Tech',
+    name: 'Prof X',
+    rating: 5,
+    fee: 25,
+  }),
 };
