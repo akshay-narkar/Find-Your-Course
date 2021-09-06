@@ -23,6 +23,12 @@ code {
   border: 1px white;
 }
 
+.favsbtn {
+  background-color: #ec5200;
+  color: white;
+  border: 1px white;
+}
+
 .shadow {
   box-shadow: 0 3px 10px rgb(13, 13, 13, 0.2);
 }
@@ -33,9 +39,13 @@ code {
 
 .backgroundsign {
   min-height: calc(100vh - 56px);
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.7) 0 100%), url("./images/signup.jpg");
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.7) 10% 100%, rgba(59, 59, 59, 0.7) 20% 100%), url("./images/signup.jpg");
   background-size: cover;
   overflow: hidden;
+}
+
+.favpage {
+  min-height: calc(100vh - 56px);
 }
 
 .cardborder {
@@ -55,4 +65,12 @@ code {
 
 .link:hover {
   color: darkblue;
+}
+
+.singlecardborder {
+  border: 1px solid white;
+}
+
+.card-img-top-favs {
+  border: 0;
 }
