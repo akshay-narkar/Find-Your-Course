@@ -1,5 +1,3 @@
-/*eslint-disable*/
-
 import PropTypes from 'prop-types';
 import ReactStars from 'react-stars';
 import { Link } from 'react-router-dom';
@@ -10,7 +8,6 @@ function Singlecoursepage(props) {
   const {
     x, favlist, pageid, clickhandler,
   } = props;
-
 
   const imagewidth = {
     width: '100%',
@@ -31,15 +28,18 @@ function Singlecoursepage(props) {
         <div className="card-body d-flex justify-content-left">
           <div>
             <h4 className="card-title fw-bold my-3">
-              <span className="fw-bold">Taught By:</span>&nbsp; {x.teacher_name}
+              <span className="fw-bold">Taught By:</span>
+              {x.teacher_name}
             </h4>
-             <h5 className="card-text fw-normal">
-              <span className="fw-bold">Domain:</span>&nbsp;{x.domain}
+            <h5 className="card-text fw-normal">
+              <span className="fw-bold">Domain:</span>
+              {x.domain}
             </h5>
             <p className="card-text fw-bold d-flex align-items-center justify-content-left my-2">
               <span className="fw-bold" style={Object.assign(size, color)}>
                 {' '}
-                 <span className="fw-bold">Rating:</span>&nbsp;{x.rating}
+                <span className="fw-bold">Rating:</span>
+                {x.rating}
                 {' '}
               </span>
               <ReactStars
@@ -50,13 +50,18 @@ function Singlecoursepage(props) {
                 color2="#b79c07"
               />
             </p>
-               <h5 className="card-text fw-normal my-2">
-                <span className="fw-bold">Fees:</span>&nbsp;$
-                {x.fee}
-              </h5>
+            <h5 className="card-text fw-normal my-2">
+              <span className="fw-bold">Fees:</span>
+&nbsp;$
+              {x.fee}
+            </h5>
             <h5 className="card-text fw-bold my-2">
-              About The Course: 
-             <span> {x.details} </span>
+              About The Course:
+              <span>
+                {' '}
+                {x.details}
+                {' '}
+              </span>
             </h5>
 
           </div>
@@ -104,6 +109,7 @@ Singlecoursepage.propTypes = {
     id: PropTypes.number.isRequired,
     domain: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    details: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     fee: PropTypes.number.isRequired,
     teacher_name: PropTypes.string.isRequired,
