@@ -6,13 +6,16 @@ import { allfavs, errors } from '../Actions/index';
 import { getfavs } from '../API/apicalls';
 import Navbar from '../Components/Navbar';
 import Singlefavpage from '../Components/Singlefavpage';
-import helperauth from '../API/helper_auth';
+import helperauth from '../Helpers/helper_auth';
 
 function FavsPage(props) {
   /* eslint-disable-next-line */
   const { user_id } = useParams();
   const { favs, calldispatch, errordispatch } = props;
-  const params = helperauth();
+  let params;
+  if (sessionStorage.getItem('uid')) {
+    params = helperauth();
+  }
 
   useEffect(() => {
     getfavs(user_id, calldispatch, params, errordispatch);
