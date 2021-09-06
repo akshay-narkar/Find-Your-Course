@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
 import ReactStars from 'react-stars';
-import image from '../images/signup.jpg';
 
 export default function Singlefavpage(props) {
   const { x } = props;
 
   const width = {
     width: '18rem',
-    height: '24rem',
+    'min-height': '30rem',
   };
 
   const imagewidth = {
@@ -26,7 +25,7 @@ export default function Singlefavpage(props) {
   return (
     <>
       <div className="card cardborder shadow-card" id={x.id} style={width}>
-        <img src={image} style={imagewidth} className="card-img-top" alt="course" />
+        <img src={x.course_photo} style={imagewidth} className="card-img-top" alt="course" />
         <div className="card-body d-flex justify-content-left">
           <div>
             <p className="card-title m-0 fw-bold">
@@ -68,5 +67,12 @@ Singlefavpage.propTypes = {
     name: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     fee: PropTypes.number.isRequired,
-  }).isRequired,
+    course_photo: PropTypes.string,
+  }),
+};
+
+Singlefavpage.defaultProps = {
+  x: PropTypes.shape({
+    course_photo: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp2698114.jpg&f=1&nofb=1',
+  }),
 };
