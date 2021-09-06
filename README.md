@@ -15,13 +15,9 @@ Find Your Course is a The Final Capstone project as a part of the Microverse Cur
 ## Find Your Course Screenshots
 
 <div align = "center">
-<img src="./src/images/login.png" height="55%"/>
+<img src="./src/images/final.gif"/>
 </div>
 <hr/>
-
-<div align = "center">
-<img src="./src/images/signup.png" height="55%"/>
-</div>
 
 ## Built With
 
