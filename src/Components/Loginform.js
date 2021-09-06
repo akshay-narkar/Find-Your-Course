@@ -23,7 +23,7 @@ export default function Loginform(props) {
                 <input type="password" className="form-control fw-bold" id="Password1" required />
               </label>
             </div>
-            <button type="submit" className="btn signing w-25 shadow fw-bold">Submit</button>
+            <button type="submit" className="btn signing shadow fw-bold">Submit</button>
           </form>
           <div className="mt-3">
             <p className="mb-0">New User? Sign Up Here</p>
