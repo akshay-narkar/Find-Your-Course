@@ -2,7 +2,7 @@
 
 # Final Capstone Project: Find Your Course
 
-Find Your Course is a The Final Capstone project as a part of the Microverse Curriculum. This is the front end build using React & Redux that accesses data from the Rails API, also built as a part of the project. A user can browse through multiple courses & add them to their watchlist if logged in.
+Find Your Course is a The Final Capstone project as a part of the Microverse Curriculum. This is the front end build using React & Redux that accesses data from the Rails API, also built as a part of the project. A user can browse through multiple courses & add them to their watchlist if logged in. Design is based on - (https://www.behance.net/gallery/37706679/Circle-Landing-page-Dashboard-Mobile-App)
 
 ## MVP Features
 
@@ -70,6 +70,8 @@ Contributions, issues, and feature requests are welcome!
 Give a ⭐️ if you like this project!
 
 ## Acknowledgments
+
+Design idea by [Alexey Savitskiy on Behance](https://www.behance.net/alexey_savitskiy)
 
 ## 📝 License
 
