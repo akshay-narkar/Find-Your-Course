@@ -8,13 +8,13 @@ function Navloggedin(props) {
   return (
     <>
       <li>
-        <Link to={{ pathname: `/users/${userid}/favs` }} className="nav-link active" aria-current="page">
+        <Link to={{ pathname: `/users/${userid}/favs` }} className="nav-link active fw-bold" aria-current="page">
           {username}
           `s Favs
         </Link>
       </li>
       <li>
-        <Link to={{ pathname: '/logout' }} className="nav-link active" aria-current="page">Logout</Link>
+        <Link to={{ pathname: '/logout' }} className="nav-link active fw-light" aria-current="page">Logout</Link>
       </li>
     </>
 
