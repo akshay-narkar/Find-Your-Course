@@ -1,7 +1,7 @@
 import { Redirect, useHistory } from 'react-router-dom';
 import { signout } from '../API/apicalls';
 import Navbar from './Navbar';
-import helperauth from '../API/helper_auth';
+import helperauth from '../Helpers/helper_auth';
 
 export default function Signout() {
   const history = useHistory();
