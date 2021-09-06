@@ -6,8 +6,8 @@ export default function Signupform(props) {
 
   return (
     <>
-      <div className="backgroundsign row align-items-center m-0">
-        <div className="container text-center">
+      <div className="backgroundsign row align-items-center">
+        <div className="container text-center my-4">
           <h1 className="my-2">Welcome To UpSkill!</h1>
           <h3 className="my-4">{error}</h3>
           <form onSubmit={clickHandler}>
@@ -37,7 +37,7 @@ export default function Signupform(props) {
               </label>
             </div>
 
-            <button type="submit" className="btn signing w-25 shadow fw-bold">Submit</button>
+            <button type="submit" className="btn signing shadow fw-bold">Sign Up</button>
           </form>
           <div className="mt-3">
             <p className="mb-0">Already a User? Login Here</p>
