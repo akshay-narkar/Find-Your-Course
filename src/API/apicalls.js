@@ -2,7 +2,7 @@ import axios from 'axios';
 import { allcourse } from '../Actions/index';
 
 const delay = (time) => new Promise((res) => setTimeout(res, time));
-const baseURL = 'https://courses-api-microverse.herokuapp.com'
+const baseURL = 'https://courses-api-microverse.herokuapp.com';
 async function getcourses(dispatch1) {
   try {
     const response = await axios.get(`${baseURL}/api/v1/courses`);
