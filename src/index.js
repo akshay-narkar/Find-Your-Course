@@ -14,7 +14,6 @@ import { getcourses } from './API/apicalls';
 const inistate = {
   favs: [],
   courses: [],
-  username: '',
   favlist: [],
 };
 
