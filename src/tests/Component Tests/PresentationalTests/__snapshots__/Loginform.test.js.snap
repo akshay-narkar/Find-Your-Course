@@ -14,9 +14,7 @@ exports[`UI is unaltered wrt first snapshot 1`] = `
     </h1>
     <h3
       className="my-4"
-    >
-      Random error
-    </h3>
+    />
     <form
       onSubmit={[Function]}
     >
