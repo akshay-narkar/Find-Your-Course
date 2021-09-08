@@ -11,25 +11,27 @@ function Coursepage(props) {
   const { id } = useParams();
   const pageid = +id;
   const {
-    courses, userid, calldispatch, errordispatch,
+    courses, calldispatch, errordispatch,
   } = props;
 
   let rightcourse = [];
+  let userid = 1;
 
   if (courses.length > 0) {
     rightcourse = courses[0].filter((xmas) => xmas.id === pageid);
   }
+
   let params;
 
-  if (sessionStorage.getItem('uid')) { params = helperauth(); }
+  if (sessionStorage.getItem('uid')) {
+    params = helperauth();
+    userid = JSON.parse((sessionStorage.getItem('userdetails')));
+    userid = userid.userid;
+  }
 
   const addtofavs = () => {
     addfavapi(userid, calldispatch, params, id, errordispatch);
   };
-
-  // const removefromfavs = () => {
-
-  // }
 
   return (
     <>
@@ -62,19 +64,13 @@ function Coursepage(props) {
 Coursepage.propTypes = {
   calldispatch: PropTypes.func.isRequired,
   errordispatch: PropTypes.func.isRequired,
-  userid: PropTypes.number,
   courses: PropTypes.arrayOf(PropTypes.array).isRequired,
 };
 
-Coursepage.defaultProps = {
-  userid: null,
-};
-
 function mapStateToProps(state) {
-  const { userid } = state.usersreducer;
   const { courses } = state.coursersreducer;
 
-  return ({ userid, courses });
+  return ({ courses });
 }
 
 const mapDispatchToProps = (dispatch) => ({
