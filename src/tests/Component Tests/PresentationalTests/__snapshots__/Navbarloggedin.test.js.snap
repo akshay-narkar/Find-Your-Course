@@ -6,7 +6,7 @@ Array [
     <a
       aria-current="page"
       className="nav-link active fw-bold"
-      href="/users/null/favs"
+      href="/users/undefined/favs"
       onClick={[Function]}
     >
       \`s Favs
