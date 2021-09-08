@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export default function Loginform(props) {
+function Loginform(props) {
   const { clickHandler, error } = props;
 
   return (
@@ -35,6 +36,11 @@ export default function Loginform(props) {
   );
 }
 
+function mapStateToProps(state) {
+  const { error } = state.errorsreducer;
+  return ({ error });
+}
+
 Loginform.propTypes = {
   clickHandler: PropTypes.func.isRequired,
   error: PropTypes.string,
@@ -43,3 +49,5 @@ Loginform.propTypes = {
 Loginform.defaultProps = {
   error: '',
 };
+
+export default connect(mapStateToProps, null)(Loginform);

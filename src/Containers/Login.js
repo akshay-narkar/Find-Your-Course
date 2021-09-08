@@ -8,7 +8,7 @@ import { errors, userdeets } from '../Actions/index';
 
 function Login(props) {
   const history = useHistory();
-  const { error, errordispatch, userdispatch } = props;
+  const { errordispatch, userdispatch } = props;
   const submitChange = (event) => {
     event.preventDefault();
     const params = { email: event.target.Email1.value, password: event.target.Password1.value };
@@ -24,7 +24,7 @@ function Login(props) {
           {' '}
           <Navbar />
           {' '}
-          <LoginForm clickHandler={submitChange} error={error} />
+          <LoginForm clickHandler={submitChange} />
           {' '}
 
         </>
@@ -32,11 +32,6 @@ function Login(props) {
 
     </>
   );
-}
-
-function mapStateToProps(state) {
-  const { error } = state.errorsreducer;
-  return ({ error });
 }
 
 const mapDispatchToProps = (dispatch) => ({
@@ -48,11 +43,6 @@ const mapDispatchToProps = (dispatch) => ({
 Login.propTypes = {
   errordispatch: PropTypes.func.isRequired,
   userdispatch: PropTypes.func.isRequired,
-  error: PropTypes.string,
 };
 
-Login.defaultProps = {
-  error: null,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);

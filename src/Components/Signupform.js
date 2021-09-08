@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export default function Signupform(props) {
+function Signupform(props) {
   const { clickHandler, error } = props;
 
   return (
@@ -49,6 +50,11 @@ export default function Signupform(props) {
   );
 }
 
+function mapStateToProps(state) {
+  const { error } = state.errorsreducer;
+  return ({ error });
+}
+
 Signupform.propTypes = {
   clickHandler: PropTypes.func.isRequired,
   error: PropTypes.string,
@@ -57,3 +63,5 @@ Signupform.propTypes = {
 Signupform.defaultProps = {
   error: '',
 };
+
+export default connect(mapStateToProps, null)(Signupform);

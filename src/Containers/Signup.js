@@ -8,7 +8,7 @@ import { errors, userdeets } from '../Actions/index';
 
 function Signup(props) {
   const history = useHistory();
-  const { error, errordispatch, userdispatch } = props;
+  const { errordispatch, userdispatch } = props;
   const submitChange = (event) => {
     event.preventDefault();
     const params = {
@@ -28,7 +28,7 @@ function Signup(props) {
           {' '}
           <Navbar />
           {' '}
-          <SignUpForm clickHandler={submitChange} error={error} />
+          <SignUpForm clickHandler={submitChange} />
           {' '}
           {' '}
         </>
@@ -38,25 +38,14 @@ function Signup(props) {
   );
 }
 
-function mapStateToProps(state) {
-  const { error } = state.errorsreducer;
-  return ({ error });
-}
-
 const mapDispatchToProps = (dispatch) => ({
   errordispatch: (text) => dispatch(errors(text)),
   userdispatch: (userinfo) => dispatch(userdeets(userinfo)),
-
 });
 
 Signup.propTypes = {
   errordispatch: PropTypes.func.isRequired,
   userdispatch: PropTypes.func.isRequired,
-  error: PropTypes.string,
 };
 
-Signup.defaultProps = {
-  error: null,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default connect(null, mapDispatchToProps)(Signup);
