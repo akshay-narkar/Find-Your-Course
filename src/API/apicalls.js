@@ -8,7 +8,7 @@ async function getcourses(dispatch1) {
     const response = await axios.get(`${baseURL}/api/v1/courses`);
     dispatch1(allcourse(response.data.data));
   } catch (error) {
-    // console.error(error);
+    //
   }
 }
 
@@ -56,7 +56,7 @@ async function signout(authParams, history) {
     await axios.delete(`${baseURL}/api/v1/auth/sign_out`, { params: authParams });
     history.push('/login');
   } catch (error) {
-    // return error;
+    //
   }
 }
 
@@ -85,16 +85,6 @@ async function addfavapi(userid, dispatch1, authParams, id, errordispatch) {
     errordispatch(null);
   }
 }
-
-// async function delfav(id) {
-//   try {
-//     const response = await axios.post(` https://courses-api-microverse.herokuapp.com/api/v1/users/${userid}/favs/1`,
-//  {params:{course_id:id}});
-//     // dispatch1(allcourse(response.data.data));
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
 
 export {
   getcourses, signin, signup, getfavs, addfavapi, signout,

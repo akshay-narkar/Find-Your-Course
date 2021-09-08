@@ -9,9 +9,6 @@ const favsreducer = (state = [], action) => {
     case FAVCOURSEADD:
       statenew.favlist = [...statenew.favlist, action.fav];
       return statenew;
-    // case FAVCOURSEDEL:
-    //   statenew.favs = [...statenew.favs, action.fav];
-    //   return statenew;
     default:
       return state;
   }

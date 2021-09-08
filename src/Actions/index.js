@@ -20,11 +20,6 @@ const addfav = (fav) => ({
   fav,
 });
 
-// const delfav = (fav) => ({
-//   type: FAVCOURSEDEL,
-//   fav,
-// });
-
 const errors = (text) => ({
   type: ERROR,
   text,

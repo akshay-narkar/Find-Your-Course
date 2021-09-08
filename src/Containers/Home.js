@@ -33,8 +33,4 @@ Home.propTypes = {
   courses: PropTypes.arrayOf(PropTypes.object),
 }.isRequired;
 
-// Homepage.defaultProps = {
-//   teams: [],
-// };
-
 export default connect(mapStateToProps, null)(Home);
