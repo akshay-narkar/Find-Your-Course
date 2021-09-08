@@ -45,7 +45,7 @@ function FavsPage(props) {
 FavsPage.propTypes = {
   calldispatch: PropTypes.func.isRequired,
   errordispatch: PropTypes.func.isRequired,
-  favs: PropTypes.arrayOf(PropTypes.object),
+  favs: PropTypes.arrayOf(PropTypes.array),
 };
 
 FavsPage.defaultProps = {
