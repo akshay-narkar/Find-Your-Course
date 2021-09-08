@@ -13,7 +13,7 @@ function Singlecoursepage(props) {
   };
 
   const size = {
-    'font-size': '1.3rem',
+    fontSize: '1.3rem',
   };
 
   const color = {
@@ -101,7 +101,7 @@ function Singlecoursepage(props) {
 
 Singlecoursepage.propTypes = {
   favlist: PropTypes.arrayOf(PropTypes.string),
-  pageid: PropTypes.string.isRequired,
+  pageid: PropTypes.number.isRequired,
   clickhandler: PropTypes.func.isRequired,
   x: PropTypes.shape({
     id: PropTypes.number,

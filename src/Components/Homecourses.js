@@ -8,7 +8,7 @@ export default function Courses(props) {
 
   const width = {
     width: '18rem',
-    'min-height': '30rem',
+    minHeight: '30rem',
   };
 
   const imagewidth = {
@@ -17,7 +17,7 @@ export default function Courses(props) {
   };
 
   const size = {
-    'font-size': '1.4rem',
+    fontSize: '1.4rem',
   };
 
   const color = {
@@ -37,7 +37,7 @@ export default function Courses(props) {
               <p className="card-text m-0 fw-normal">
                 {x.domain}
               </p>
-              <p className="card-text m-0 fw-bold d-flex align-items-center justify-content-left">
+              <div className="card-text m-0 fw-bold d-flex align-items-center justify-content-left">
                 <span className="fw-bold" style={Object.assign(size, color)}>
                   {' '}
                   {x.rating}
@@ -51,7 +51,7 @@ export default function Courses(props) {
                   edit={false}
                   color2="#b79c07"
                 />
-              </p>
+              </div>
               <p className="card-text m-0 fw-normal">
                 $
                 {x.fee}
