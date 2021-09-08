@@ -1,20 +1,15 @@
 import {
   ALLCOURSES, FAVCOURSES, ERROR,
-  USERDEETS, FAVCOURSEADD,
+  FAVCOURSEADD,
 } from '../../Actions/index';
 
 import coursersreducer from '../../Reducers/coursereducer';
 import favsreducer from '../../Reducers/favsreducer';
-import usersreducer from '../../Reducers/userreducer';
 import errorsreducer from '../../Reducers/errorreducer';
 
 const state = { courses: [] };
 const favs = { favs: [] };
 const favlist = { favlist: [] };
-const user = {
-  userid: null,
-  username: null,
-};
 
 describe('Courses Reducer', () => {
   describe('INITIAL_DUMMY_STATE', () => {
@@ -56,24 +51,6 @@ describe('Favs Reducer', () => {
       const unexpectedState = { favlist: [2] };
       expect(favsreducer(favlist, action)).toEqual(expectedState);
       expect(favsreducer(favlist, action)).not.toEqual(unexpectedState);
-    });
-  });
-});
-
-describe('Users Reducer', () => {
-  describe('USE THE CORRECT GET USERS ACTION', () => {
-    test('returns the correct state', () => {
-      const action = { type: USERDEETS, user: { userid: 1, username: 'Spain' } };
-      const expectedState = {
-        userid: 1,
-        username: 'Spain',
-      };
-      const unexpectedState = {
-        userid: 2,
-        username: 'ENG',
-      };
-      expect(usersreducer(user, action)).toEqual(expectedState);
-      expect(usersreducer(user, action)).not.toEqual(unexpectedState);
     });
   });
 });
