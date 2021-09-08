@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-function Navloggedin(props) {
-  const { userid, username } = props;
+export default function Navloggedin() {
+  const userdeets = JSON.parse((sessionStorage.getItem('userdetails')));
+  let userid;
+  let username;
+  if (sessionStorage.getItem('userdetails')) {
+    userid = userdeets.userid;
+    username = userdeets.username;
+  }
 
   return (
     <>
@@ -20,20 +24,3 @@ function Navloggedin(props) {
 
   );
 }
-
-function mapStateToProps(state) {
-  const { userid, username } = state.usersreducer;
-  return ({ userid, username });
-}
-
-Navloggedin.propTypes = {
-  userid: PropTypes.number,
-  username: PropTypes.string,
-};
-
-Navloggedin.defaultProps = {
-  userid: 1,
-  username: 'NoName',
-};
-
-export default connect(mapStateToProps)(Navloggedin);
