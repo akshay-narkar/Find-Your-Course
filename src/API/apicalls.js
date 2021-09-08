@@ -3,6 +3,14 @@ import { allcourse } from '../Actions/index';
 
 const delay = (time) => new Promise((res) => setTimeout(res, time));
 const baseURL = 'https://courses-api-microverse.herokuapp.com';
+
+const setsess = (response) => {
+  sessionStorage.setItem('userdetails', JSON.stringify({ userid: response.data.data.id, username: response.data.data.name }));
+};
+const setuid = (response) => {
+  sessionStorage.setItem('uid', JSON.stringify(response.headers));
+};
+
 async function getcourses(dispatch1) {
   try {
     const response = await axios.get(`${baseURL}/api/v1/courses`);
@@ -12,7 +20,7 @@ async function getcourses(dispatch1) {
   }
 }
 
-async function signup(signUp, history, errordispatch, userdispatch) {
+async function signup(signUp, history, errordispatch) {
   try {
     const response = await axios.post(`${baseURL}/api/v1/auth`, {
       name: signUp.name,
@@ -20,9 +28,8 @@ async function signup(signUp, history, errordispatch, userdispatch) {
       password: signUp.password,
       password_confirmation: signUp.password_confirmation,
     }, {});
-    sessionStorage.setItem('uid', JSON.stringify(response.headers));
-    const user = { userid: response.data.data.id, username: response.data.data.name };
-    userdispatch(user);
+    setuid(response);
+    setsess(response);
     history.push('/');
   } catch (error) {
     const error1 = error.response.data.errors.full_messages[0];
@@ -32,15 +39,13 @@ async function signup(signUp, history, errordispatch, userdispatch) {
   }
 }
 
-async function signin(params, history, errordispatch, userdispatch) {
+async function signin(params, history, errordispatch) {
   try {
     const response = await axios.post(`${baseURL}/api/v1/auth/sign_in`, {}, {
       headers: params,
     });
-
-    const user = { userid: response.data.data.id, username: response.data.data.name };
-    userdispatch(user);
-    sessionStorage.setItem('uid', JSON.stringify(response.headers));
+    setuid(response);
+    setsess(response);
     history.push('/');
   } catch (error) {
     const error1 = error.response.data.errors[0];
