@@ -100,7 +100,7 @@ function Singlecoursepage(props) {
 }
 
 Singlecoursepage.propTypes = {
-  favlist: PropTypes.arrayOf(PropTypes.string),
+  favlist: PropTypes.arrayOf(PropTypes.number),
   pageid: PropTypes.number.isRequired,
   clickhandler: PropTypes.func.isRequired,
   x: PropTypes.shape({
