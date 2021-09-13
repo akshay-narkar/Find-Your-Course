@@ -1,0 +1,81 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.form-control {
+  border-radius: 1rem;
+  background-color: transparent;
+  text-align: center;
+  border: 1px solid rgb(167, 167, 167);
+}
+
+.signing {
+  border-radius: 1rem;
+  background-color: #ec5200;
+  color: white;
+  border: 1px white;
+}
+
+.favsbtn {
+  background-color: #ec5200;
+  color: white;
+  border: 1px white;
+  height: 60px;
+}
+
+.favssize {
+  font-size: large;
+}
+
+.shadow {
+  box-shadow: 0 3px 10px rgb(13, 13, 13, 0.2);
+}
+
+.shadow-card {
+  box-shadow: 0 7px 18px 2px rgba(150, 170, 180, 0.5);
+}
+
+.backgroundsign {
+  min-height: calc(100vh - 56px);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.7) 10% 100%, rgba(59, 59, 59, 0.7) 20% 100%), url("./images/signup.jpg");
+  background-size: cover;
+  overflow: hidden;
+}
+
+.favpage {
+  min-height: calc(100vh - 56px);
+}
+
+.cardborder {
+  border: 1px solid white;
+  border-radius: 1rem;
+}
+
+.card-img-top {
+  border-top-left-radius: calc(1rem - 1px);
+  border-top-right-radius: calc(1rem - 1px);
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover {
+  color: darkblue;
+}
+
+.singlecardborder {
+  border: 1px solid white;
+}
+
+.card-img-top-favs {
+  border: 0;
+}

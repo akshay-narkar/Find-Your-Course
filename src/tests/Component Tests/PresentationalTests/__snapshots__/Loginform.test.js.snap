@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UI is unaltered wrt first snapshot 1`] = `
+<div
+  className="backgroundsign row align-items-center m-0"
+>
+  <div
+    className="container text-center"
+  >
+    <h1
+      className="my-2"
+    >
+      Welcome Back!
+    </h1>
+    <h3
+      className="my-4"
+    />
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="mb-3"
+      >
+        <label
+          className="form-label fw-bold"
+          htmlFor="Email"
+        >
+          Email address
+          <input
+            className="form-control fw-bold"
+            id="Email1"
+            required={true}
+            type="email"
+          />
+        </label>
+      </div>
+      <div
+        className="mb-3"
+      >
+        <label
+          className="form-label fw-bold"
+          htmlFor="Password"
+        >
+          Password
+          <input
+            className="form-control fw-bold"
+            id="Password1"
+            required={true}
+            type="password"
+          />
+        </label>
+      </div>
+      <button
+        className="btn signing shadow fw-bold"
+        type="submit"
+      >
+        Login
+      </button>
+    </form>
+    <div
+      className="mt-3"
+    >
+      <p
+        className="mb-0"
+      >
+        New User? Sign Up Here
+      </p>
+      <a
+        className="nav-link active mt-1 pt-1"
+        href="/signup"
+        onClick={[Function]}
+      >
+        Sign Up
+      </a>
+    </div>
+  </div>
+</div>
+`;

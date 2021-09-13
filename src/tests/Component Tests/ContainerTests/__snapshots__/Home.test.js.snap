@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UI is unaltered wrt first snapshot 1`] = `
+Array [
+  <div>
+    <nav
+      className="navbar navbar-expand-lg navbar-light bg-light"
+    >
+      <div
+        className="container-fluid"
+      >
+        <a
+          aria-current="page"
+          className="navbar-brand fw-bold"
+          href="/"
+          onClick={[Function]}
+        >
+          Upskill
+        </a>
+        <button
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          className="navbar-toggler"
+          data-bs-target="#navbarSupportedContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <span
+            className="navbar-toggler-icon"
+          />
+        </button>
+        <div
+          className="collapse navbar-collapse"
+          id="navbarSupportedContent"
+        >
+          <ul
+            className="navbar-nav me-auto mb-2 mb-lg-0"
+          >
+            <li
+              className="nav-item"
+            >
+              <a
+                aria-current="page"
+                className="nav-link active fw-light"
+                href="/"
+                onClick={[Function]}
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                aria-current="page"
+                className="nav-link active fw-light"
+                href="/login"
+                onClick={[Function]}
+              >
+                Login
+              </a>
+            </li>
+            <li
+              className="nav-item"
+            >
+              <a
+                aria-current="page"
+                className="nav-link active fw-light"
+                href="/signup"
+                onClick={[Function]}
+              >
+                SignUp
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>,
+  <div
+    className="my-4"
+  >
+    <h3
+      className="text-center"
+    >
+      Top Courses 
+    </h3>
+  </div>,
+  <div
+    className="d-flex flex-wrap p-0 mx-auto my-4 justify-content-center"
+  >
+    <h5>
+      Loading... 
+    </h5>
+  </div>,
+]
+`;
