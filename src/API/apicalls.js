@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { allcourse } from '../Actions/index';
+import coursefavid from '../Helpers/coursefavid';
 
 const delay = (time) => new Promise((res) => setTimeout(res, time));
 const baseURL = 'https://courses-api-microverse.herokuapp.com';
+// const baseURL = 'http://localhost:3000';
 
 const setsess = (response) => {
   sessionStorage.setItem('userdetails', JSON.stringify({ userid: response.data.data.id, username: response.data.data.name }));
@@ -78,6 +80,20 @@ async function getfavs(userid, dispatch1, authParams, errordispatch) {
   }
 }
 
+async function getfavonce(dispatch1, authParams, errordispatch) {
+  try {
+    const response = await axios.get(`${baseURL}/api/v1/users/1/favs/new`,
+      { params: authParams });
+    const fdata = coursefavid(response.data.data);
+    dispatch1((fdata));
+  } catch (error) {
+    const error1 = error.response.data.errors[0];
+    errordispatch(error1);
+    await delay(2000);
+    errordispatch(null);
+  }
+}
+
 async function addfavapi(userid, dispatch1, authParams, id, errordispatch) {
   try {
     const response = await axios.post(`${baseURL}/api/v1/users/${userid}/favs`,
@@ -92,5 +108,5 @@ async function addfavapi(userid, dispatch1, authParams, id, errordispatch) {
 }
 
 export {
-  getcourses, signin, signup, getfavs, addfavapi, signout,
+  getcourses, signin, signup, getfavs, addfavapi, signout, getfavonce,
 };

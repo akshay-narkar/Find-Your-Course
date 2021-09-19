@@ -1,4 +1,4 @@
-import { FAVCOURSES, FAVCOURSEADD } from '../Actions/index';
+import { FAVCOURSES, FAVCOURSEADD, FAVCOURSEADDONCE } from '../Actions/index';
 
 const favsreducer = (state = [], action) => {
   const statenew = { ...state };
@@ -8,6 +8,9 @@ const favsreducer = (state = [], action) => {
       return statenew;
     case FAVCOURSEADD: {
       const favlist = [...state.favlist, action.fav];
+      return { ...state, favlist }; }
+    case FAVCOURSEADDONCE: {
+      const favlist = [...state.favlist, ...action.fav];
       return { ...state, favlist }; }
     default:
       return state;
